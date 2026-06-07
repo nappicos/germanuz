@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🇩🇪 Deutsch · Lernmodus · Alle 200 Fragen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: radial-gradient(ellipse at 30% 20%, #0a0a2a, #010018);
+            font-family: 'Inter', sans-serif;
+            color: #f0eef7;
+            position: relative;
+            overflow-x: hidden;
+            padding: 2rem 1.5rem;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(219, 62, 140, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(155, 48, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 35, 149, 0.15) 0%, transparent 60%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: starTwinkle 4s infinite alternate;
+        }
+
+        @keyframes starTwinkle {
+            0% { opacity: 0.1; transform: scale(0.6); }
+            100% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 6px #DB3E8C, 0 0 3px #9B30FF; }
+        }
+
+        .de-icon {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            font-size: clamp(2rem, 6vw, 4rem);
+            opacity: 0.25;
+            animation: floatIcon 20s infinite alternate;
+        }
+        @keyframes floatIcon {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, -25px); }
+        }
+        .brandenburg { top: 3%; left: 1%; animation-duration: 18s; }
+        .tv-tower { top: 12%; right: 2%; animation-duration: 22s; }
+        .pretzel { bottom: 8%; right: 3%; animation-duration: 24s; }
+        .beer { bottom: 12%; left: 3%; animation-duration: 20s; }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(5, 5, 25, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(219, 62, 140, 0.6);
+            box-shadow: 0 0 30px rgba(155, 48, 255, 0.3);
+            text-align: center;
+        }
+
+        .flag-strip {
+            display: flex;
+            justify-content: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+        .stripe {
+            width: 70px;
+            height: 12px;
+            border-radius: 20px;
+        }
+        .stripe.black { background: #1a1a2e; box-shadow: 0 0 12px #F6C45C; }
+        .stripe.red { background: #DB3E8C; box-shadow: 0 0 12px #DB3E8C; }
+        .stripe.gold { background: #F6C45C; box-shadow: 0 0 12px #F6C45C; }
+
+        h1 {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            background: linear-gradient(135deg, #DB3E8C, #9B30FF, #0A2F8A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            font-size: 1rem;
+            color: #FFAFEB;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote {
+            background: rgba(26, 26, 46, 0.6);
+            border-left: 5px solid #DB3E8C;
+            border-radius: 1.5rem;
+            padding: 0.7rem 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: #FFE6F0;
+            font-size: 0.95rem;
+        }
+        .quote small {
+            display: block;
+            font-size: 0.8rem;
+            color: #9B30FF;
+            margin-top: 5px;
+        }
+
+        .card {
+            background: rgba(10, 8, 40, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #9B30FF;
+            transition: 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #DB3E8C;
+            box-shadow: 0 0 20px #DB3E8C;
+            background: rgba(219, 62, 140, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(95deg, #DB3E8C, #9B30FF);
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: 0.2s;
+            font-size: 1.1rem;
+            box-shadow: 0 0 10px #DB3E8C;
+        }
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px #F6C45C;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: #FFAFEB;
+        }
+        .features span {
+            background: rgba(0,0,0,0.4);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #BBAAFF;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .container { padding: 1rem; }
+            .features span { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow"></div>
+    <div class="de-icon brandenburg">🏛️</div>
+    <div class="de-icon tv-tower">📡</div>
+    <div class="de-icon pretzel">🥨</div>
+    <div class="de-icon beer">🍺</div>
+
+    <div class="container">
+        <div class="flag-strip">
+            <div class="stripe black"></div>
+            <div class="stripe red"></div>
+            <div class="stripe gold"></div>
+        </div>
+        <h1><i class="fas fa-book-open"></i> Deutsch · Lernmodus</h1>
+        <div class="sub">📖 Alle 200 Fragen mit Erklärungen auf Usbekisch</div>
+
+        <div class="quote" id="quoteBox">
+            <i class="fas fa-quote-left"></i> « Übung macht den Meister. »
+            <small>Mashq ustani yetishtiradi.</small>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-language" style="font-size: 3rem; color: #DB3E8C;"></i>
+            <h2 style="margin: 0.5rem 0;">🇩🇪 200 Fragen in fester Reihenfolge</h2>
+            <div class="features">
+                <span>✔️ Vollständige usbekische Übersetzung</span>
+                <span>✔️ UZ‑Knöpfe für jede Option</span>
+                <span>✔️ Grammatikerklärung auf Usbekisch</span>
+                <span>✔️ Navigation zu jeder Frage (1–200)</span>
+                <span>✔️ Optionen werden gemischt</span>
+                <span>✔️ Fortschrittsbalken & Statistiken</span>
+            </div>
+            <a href="learn-de.html" class="btn">📖 Jetzt lernen →</a>
+        </div>
+
+        <footer>
+            ✨ gleiche Regeln wie im Testmodus · zusätzliche Lernhilfen · rosa-lila-blau ✨
+        </footer>
+    </div>
+
+    <script>
+        // звезды
+        for (let i = 0; i < 150; i++) {
+            let star = document.createElement('div');
+            star.classList.add('star');
+            let sz = Math.random() * 2.5 + 1;
+            star.style.width = sz + 'px';
+            star.style.height = sz + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 5 + 's';
+            star.style.animationDuration = 3 + Math.random() * 4 + 's';
+            document.body.appendChild(star);
+        }
+
+        // цитаты (немецкий + узбекский)
+        const quotes = [
+            { de: "« Übung macht den Meister. »", uz: "Mashq ustani yetishtiradi." },
+            { de: "« Berlin ist arm, aber sexy. » — Klaus Wowereit", uz: "Berlin kambag'al, ammo jozibali." },
+            { de: "« Wer fremde Sprachen nicht kennt, weiß nichts von seiner eigenen. » — Goethe", uz: "Chet tillarni bilmagan o'z tilini bilmaydi." },
+            { de: "« Die Grenzen meiner Sprache sind die Grenzen meiner Welt. » — Wittgenstein", uz: "Tilimning chegarasi dunyomning chegarasidir." },
+            { de: "« Lernen ist wie Rudern gegen den Strom. »", uz: "O‘rganish – oqimga qarshi eshkak eshish." },
+            { de: "« Aller Anfang ist schwer. »", uz: "Har ishning boshi og'ir." },
+            { de: "« Wer nichts wagt, gewinnt nichts. »", uz: "Kim tavakkal qilmasa, hech narsa yutmaydi." }
+        ];
+        let qIdx = 0;
+        function rotateQuote() {
+            const q = quotes[qIdx];
+            const box = document.getElementById('quoteBox');
+            if (box) box.innerHTML = `<i class="fas fa-quote-left"></i> ${q.de}<br><small>${q.uz}</small>`;
+            qIdx = (qIdx + 1) % quotes.length;
+        }
+        rotateQuote();
+        setInterval(rotateQuote, 10000);
+    </script>
+</body>
+</html>
